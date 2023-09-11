@@ -39,7 +39,8 @@
     <script>
       function sendCommand(command) {
         // Replace with the correct IP address of your ESP32
-        const esp32IP = "http://192.168.29.23";
+        //const esp32IP = "http://192.168.29.23";
+        const esp32IP = window.location.origin; // This will get the current domain (e.g., https://jerom-physicus.github.io)
         fetch(esp32IP + command)
           .then((response) => {
             if (response.status !== 200) {
