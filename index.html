@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WiFi Car Control</title>
+  </head>
+  <body>
+    <h1>Control Your WiFi Car</h1>
+    <button
+      ontouchstart="sendCommand('/forward')"
+      onmousedown="sendCommand('/forward')"
+      onmouseup="sendCommand('/stop')"
+    >
+      Forward
+    </button>
+    <button
+      ontouchstart="sendCommand('/backward')"
+      onmousedown="sendCommand('/backward')"
+      onmouseup="sendCommand('/stop')"
+    >
+      Backward
+    </button>
+    <button
+      ontouchstart="sendCommand('/left')"
+      onmouseup="sendCommand('/left')"
+      onmousedown="sendCommand('/stop')"
+      ontouchend="sendCommand('/stop')"
+    >
+      Left
+    </button>
+    <button
+      ontouchstart="sendCommand('/right')"
+      onmousedown="sendCommand('/right')"
+      ontouchend="sendCommand('/stop')"
+      style="user-select: none"
+    >
+      Right
+    </button>
+
+    <script>
+      function sendCommand(command) {
+        // Replace with the correct IP address of your ESP32
+        const esp32IP = "http://192.168.29.23";
+        fetch(esp32IP + command)
+          .then((response) => {
+            if (response.status !== 200) {
+              console.log("Error:", response.status);
+            }
+          })
+          .catch((error) => {
+            console.error("Fetch Error:", error);
+          });
+      }
+    </script>
+  </body>
+</html>
