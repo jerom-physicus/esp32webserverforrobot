@@ -1,56 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>WiFi Car Control</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
   </head>
   <body>
-    <h1>Control Your WiFi Car</h1>
-    <button
-      ontouchstart="sendCommand('/forward')"
-      onmousedown="sendCommand('/forward')"
-      onmouseup="sendCommand('/stop')"
-    >
-      Forward
+    <button onclick="window.location.href ='http://192.168.29.23' ">
+      click
     </button>
-    <button
-      ontouchstart="sendCommand('/backward')"
-      onmousedown="sendCommand('/backward')"
-      onmouseup="sendCommand('/stop')"
-    >
-      Backward
-    </button>
-    <button
-      ontouchstart="sendCommand('/left')"
-      onmouseup="sendCommand('/left')"
-      onmousedown="sendCommand('/stop')"
-      ontouchend="sendCommand('/stop')"
-    >
-      Left
-    </button>
-    <button
-      ontouchstart="sendCommand('/right')"
-      onmousedown="sendCommand('/right')"
-      ontouchend="sendCommand('/stop')"
-      style="user-select: none"
-    >
-      Right
-    </button>
-
-    <script>
-      function sendCommand(command) {
-        // Replace with the correct IP address of your ESP32
-        //const esp32IP = "http://192.168.29.23";
-        const esp32IP = window.location.origin; // This will get the current domain (e.g., https://jerom-physicus.github.io)
-        fetch(esp32IP + command)
-          .then((response) => {
-            if (response.status !== 200) {
-              console.log("Error:", response.status);
-            }
-          })
-          .catch((error) => {
-            console.error("Fetch Error:", error);
-          });
-      }
-    </script>
   </body>
 </html>
